@@ -18,7 +18,7 @@ AddEventHandler('onResourceStart', function(resourceName)
 end)
 
 
-AddEventHandler('QBCore:Client:OnMoneyChange', function()
+RegisterNetEvent('QBCore:Client:OnMoneyChange', function()
 	PlayerData = QBCore.Functions.GetPlayerData()
 end)
 
