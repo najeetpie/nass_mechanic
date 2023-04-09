@@ -16,6 +16,13 @@ function GetPlayers()
     return ESX.GetPlayers()
 end
 
+function getJob(src)
+    local Player = GetPlayer(src)
+    if Player ~= nil then
+        return Player.job.name
+    end
+end
+
 function RegisterCallback(name, cb)
     ESX.RegisterServerCallback(name, cb)
 end

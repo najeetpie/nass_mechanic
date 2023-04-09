@@ -15,3 +15,4 @@ Config.price = 1000.0
 Config.DamageMultiplier = 5.0	
 Config.useTarget = true --If false it will use helptext
 Config.chargeForRepair = true -- Set to false to remove repair cost
+Config.checkForOnlineMechanic = true -- This will check if there is a mechanic online before repairing a vehicle
