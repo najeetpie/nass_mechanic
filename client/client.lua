@@ -178,6 +178,20 @@ AddEventHandler('onResourceStop', function(resourceName)
 	end
 end)
 
+function ShowNotification(msg, _type)
+	if GetResourceState('es_extended') == 'started' or GetResourceState('qb-core') == 'started' then
+	     notify(msg, _type)
+	else
+	    if GetResourceState('nass_notifications') == 'started' then
+		exports["nass_notifications"]:ShowNotification("alert", "Info", msg, 5000)
+	    else
+		BeginTextCommandThefeedPost('STRING')
+		AddTextComponentSubstringPlayerName(msg)
+		EndTextCommandThefeedPostTicker(0, 1)
+	    end
+	end
+end
+
 function ShowHelpNotification(msg)
 	AddTextEntry('helpnotification', msg) 
 	BeginTextCommandDisplayHelp('helpnotification')
