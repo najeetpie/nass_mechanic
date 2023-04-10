@@ -31,7 +31,7 @@ AddEventHandler('esx:setPlayerData', function(key, value)
     PlayerData[key] = value
 end)
 
-function ShowNotification(msg, _type)
+function notify(msg, _type)
     if GetResourceState('nass_notifications') == 'started' then
         exports["nass_notifications"]:ShowNotification("alert", "Info", msg, 5000)
     else
