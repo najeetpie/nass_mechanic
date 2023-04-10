@@ -78,7 +78,6 @@ function createTarget(ent)
 		distance = 1.5
 	})
 end
-
 function startCarRepair(mech)
 	local playerPed = PlayerPedId()
 	if GetVehiclePedIsIn(playerPed, false) ~= 0 then
@@ -92,12 +91,17 @@ function startCarRepair(mech)
 			end
 			if #(engine - mech.pos.xyz) < 20 then
 				local repairCost = math.floor((1000 - GetVehicleEngineHealth(veh))/1000*Config.price*Config.DamageMultiplier)
-				if getCash() >= repairCost then	
+				if Config.chargeForRepair then
+					if getCash() >= repairCost then	
+						ShowNotification(mech.name.." says he can fix it")
+						TriggerServerEvent("nass_mechanic:triggerServerSync", repairCost, mech, veh, engine)
+					else
+						ShowNotification('You can\'t afford that. The repair will cost $'..repairCost..' ')
+					end	
+				else
 					ShowNotification(mech.name.." says he can fix it")
 					TriggerServerEvent("nass_mechanic:triggerServerSync", repairCost, mech, veh, engine)
-				else
-					ShowNotification('You can\'t afford that. The repair will cost $'..repairCost..' ')
-				end	
+				end
 			else
 				ShowNotification('Vehicle is too far.')
 			end
