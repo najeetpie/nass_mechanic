@@ -27,7 +27,7 @@ RegisterNetEvent('QBCore:Player:SetPlayerData', function(newPlayerData)
     PlayerData = newPlayerData
 end)
 
-function ShowNotification(msg, type)
+function notify(msg, type)
     if GetResourceState('nass_notifications') == 'started' then
         exports["nass_notifications"]:ShowNotification("alert", "Info", msg, 5000)
     else
