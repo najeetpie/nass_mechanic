@@ -8,13 +8,15 @@ AddEventHandler('nass_mechanic:triggerServerSync', function(repairCost, mech, ve
     
 end)
 
-RegisterCallback("nass_mechanic:checkForMechanics", function(source, cb)
-    local Players = GetPlayers()
-    local count = 0
-    for i=1, #Players, 1 do
-        if getJob(Players[i]) == "mechanic" then
-            count = count +1
+if Config.checkForOnlineMechanic then
+    RegisterCallback("nass_mechanic:checkForMechanics", function(source, cb)
+        local Players = GetPlayers()
+        local count = 0
+        for i=1, #Players, 1 do
+            if getJob(Players[i]) == "mechanic" then
+                count = count +1
+            end
         end
-    end
-    cb(count)
-end)
+        cb(count)
+    end)
+end
