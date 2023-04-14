@@ -12,6 +12,17 @@ Citizen.CreateThread(function()
 		FreezeEntityPosition(ped, true)
 		SetEntityInvincible(ped, true)
 		SetBlockingOfNonTemporaryEvents(ped, true)
+			
+		if v.blip.enabled then
+		    blip = AddBlipForCoord(v.pos.x, v.pos.y, v.pos.z)
+		    SetBlipSprite(blip, v.blip.sprite)
+		    SetBlipScale(blip, v.blip.scale)
+		    SetBlipAsShortRange(blip, v.blip.shortRange)
+		    BeginTextCommandSetBlipName("STRING")
+		    AddTextComponentString(v.blip.label)
+		    EndTextCommandSetBlipName(blip) 
+		end	
+			
 		if Config.useTarget then
 			createTarget(v)
 		end
