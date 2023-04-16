@@ -31,7 +31,7 @@ function notify(msg, type)
     if GetResourceState('nass_notifications') == 'started' then
         exports["nass_notifications"]:ShowNotification("alert", "Info", msg, 5000)
     else
-        ESX.ShowNotification(msg)
+        QBCore.Functions.Notify(msg, type)
     end
 end
 
